@@ -1,0 +1,1 @@
+console.log("Prototype Typing Game loaded successfully.");
