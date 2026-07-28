@@ -10,7 +10,11 @@ const baseWords = [
     "train",
     "school",
     "bike",
-    "anniversary"
+    "anniversary",
+    "flashbang",
+    "grenade",
+    "halo",
+    "mystic"
 ];
 
 const words = baseWords.flatMap(function (word) {
@@ -78,13 +82,19 @@ function showScoreFeedback() {
     }, 500);
 }
 
+function focusWordInput() {
+    wordInputElement.focus();
+}
+
 // Event listeners
 lightThemeButton.addEventListener("click", function () {
     applyTheme("light");
+    focusWordInput();
 });
 
 darkThemeButton.addEventListener("click", function () {
     applyTheme("dark");
+    focusWordInput();
 });
 
 wordInputElement.addEventListener("keydown", function (event) {
@@ -93,25 +103,27 @@ wordInputElement.addEventListener("keydown", function (event) {
 
         const typedWord = wordInputElement.value.trim();
 
-if (typedWord === currentWord) {
-    score = score + 1;
-    scoreElement.textContent = score;
-    showScoreFeedback();
-    
-    wordInputElement.value = "";
+        if (typedWord === currentWord) {
+            score = score + 1;
+            scoreElement.textContent = score;
+            showScoreFeedback();
 
-    recentWords.push(currentWord.toLowerCase());
+            wordInputElement.value = "";
 
-    if (recentWords.length > historyLimit) {
-        recentWords.shift();
-    }
+            recentWords.push(currentWord.toLowerCase());
 
-    showRandomWord();
+            if (recentWords.length > historyLimit) {
+                recentWords.shift();
+            }
 
-    console.log("Correct word!");
-} else {
-    console.log("Incorrect word.");
-}
+            showRandomWord();
+
+            console.log("Correct word!");
+        } else {
+            console.log("Incorrect word.");
+        }
+
+        focusWordInput();
     }
 });
 
@@ -120,6 +132,5 @@ if (typedWord === currentWord) {
 const savedTheme = localStorage.getItem("selectedTheme") || "dark";
 
 applyTheme(savedTheme);
-
-
 showRandomWord();
+focusWordInput();

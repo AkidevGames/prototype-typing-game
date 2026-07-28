@@ -6,14 +6,16 @@ A browser-based typing game prototype developed with AI assistance and user dire
 
 The project currently contains a basic HTML, CSS, and JavaScript setup.
 
-V0.1.0
-The project now has a basic typing game loop.
-The project now creates base words and capitalized versions and combines them into one word bank through flatmap.
+## Changelog
 
-V0.1.1
+### v0.1.0
+The project now has a basic typing game loop.
+The project now creates base words and capitalized versions and combines them into one word bank through flatMap().
+
+### v0.1.1
 Project now prevents words from repeating too early.
 
-V.0.1.2
+### v0.1.2
 The project now has basic visual feedback when submitting correct answers.
 
 ## Features
@@ -23,7 +25,7 @@ The project now has basic visual feedback when submitting correct answers.
 - Enter and Space submission
 - Successful word counter
 - Automatic lowercase and capitalized word variants
-- Immediate-repeat prevention
+- Recent word history to prevent early word repetition.
 - GitHub Pages deployment
 
 ## Planned Features
@@ -34,6 +36,7 @@ The project now has basic visual feedback when submitting correct answers.
 - Scoring system
 - Difficulty settings
 - Sound effects and visual feedback
+- Survival Typing minigame
 
 ## Technologies
 
