@@ -24,6 +24,8 @@ const words = baseWords.flatMap(function (word) {
 const targetWordElement = document.getElementById("target-word");
 const wordInputElement = document.getElementById("word-input");
 const scoreElement = document.getElementById("score");
+const scoreFeedbackElement =
+    document.getElementById("score-feedback");
 const lightThemeButton = document.getElementById("light-theme-button");
 const darkThemeButton = document.getElementById("dark-theme-button");
 
@@ -64,6 +66,17 @@ function applyTheme(theme) {
     localStorage.setItem("selectedTheme", theme);
 }
 
+function showScoreFeedback() {
+    scoreFeedbackElement.classList.remove("visible");
+
+    void scoreFeedbackElement.offsetWidth;
+
+    scoreFeedbackElement.classList.add("visible");
+
+    setTimeout(function () {
+        scoreFeedbackElement.classList.remove("visible");
+    }, 500);
+}
 
 // Event listeners
 lightThemeButton.addEventListener("click", function () {
@@ -83,7 +96,8 @@ wordInputElement.addEventListener("keydown", function (event) {
 if (typedWord === currentWord) {
     score = score + 1;
     scoreElement.textContent = score;
-
+    showScoreFeedback();
+    
     wordInputElement.value = "";
 
     recentWords.push(currentWord.toLowerCase());
