@@ -5,6 +5,7 @@ A browser-based typing game prototype developed with AI assistance and user dire
 ## Current Status
 
 The project currently contains a basic HTML, CSS, and JavaScript setup.
+The project now has a basic typing game loop.
 
 ## Planned Features
 
