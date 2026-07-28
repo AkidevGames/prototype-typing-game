@@ -3,7 +3,13 @@ const baseWords = [
     "student",
     "academy",
     "mission",
-    "battle"
+    "battle",
+    "railgun",
+    "gun",
+    "train",
+    "school",
+    "bike",
+    "anniversary"
 ];
 
 const words = baseWords.flatMap(function (word) {

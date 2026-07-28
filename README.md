@@ -6,6 +6,7 @@ A browser-based typing game prototype developed with AI assistance and user dire
 
 The project currently contains a basic HTML, CSS, and JavaScript setup.
 The project now has a basic typing game loop.
+The project now creates base words and capitalized versions and combines them into one word bank through flatmap.
 
 ## Planned Features
 
