@@ -31,16 +31,22 @@ const darkThemeButton = document.getElementById("dark-theme-button");
 let currentWord = "";
 let score = 0;
 
+const recentWords = [];
+const historyLimit = 4;
+
 // Functions
 function showRandomWord() {
-    let nextWord = currentWord;
+    const availableWords = words.filter(function (word) {
+        const normalizedWord = word.toLowerCase();
 
-    while (nextWord === currentWord) {
-        const randomIndex = Math.floor(Math.random() * words.length);
-        nextWord = words[randomIndex];
-    }
+        return !recentWords.includes(normalizedWord);
+    });
 
-    currentWord = nextWord;
+    const randomIndex = Math.floor(
+        Math.random() * availableWords.length
+    );
+
+    currentWord = availableWords[randomIndex];
     targetWordElement.textContent = currentWord;
 }
 
@@ -74,17 +80,24 @@ wordInputElement.addEventListener("keydown", function (event) {
 
         const typedWord = wordInputElement.value.trim();
 
-        if (typedWord === currentWord) {
-            score = score + 1;
-            scoreElement.textContent = score;
+if (typedWord === currentWord) {
+    score = score + 1;
+    scoreElement.textContent = score;
 
-            wordInputElement.value = "";
-            showRandomWord();
+    wordInputElement.value = "";
 
-            console.log("Correct word!");
-        } else {
-            console.log("Incorrect word.");
-        }
+    recentWords.push(currentWord.toLowerCase());
+
+    if (recentWords.length > historyLimit) {
+        recentWords.shift();
+    }
+
+    showRandomWord();
+
+    console.log("Correct word!");
+} else {
+    console.log("Incorrect word.");
+}
     }
 });
 
