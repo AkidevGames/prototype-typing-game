@@ -18,6 +18,12 @@ Project now prevents words from repeating too early.
 ### v0.1.2
 The project now has basic visual feedback when submitting correct answers.
 
+### v0.1.3
+Added automatic input focus.
+
+### v0.1.4
+Added Wrong submission feedback.
+
 ## Features
 
 - Random word selection

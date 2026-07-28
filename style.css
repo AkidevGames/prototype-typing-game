@@ -147,3 +147,8 @@ body {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
+
+.word-input.incorrect {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+}

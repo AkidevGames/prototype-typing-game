@@ -86,6 +86,18 @@ function focusWordInput() {
     wordInputElement.focus();
 }
 
+function showIncorrectFeedback() {
+    wordInputElement.classList.remove("incorrect");
+
+    void wordInputElement.offsetWidth;
+
+    wordInputElement.classList.add("incorrect");
+
+    setTimeout(function () {
+        wordInputElement.classList.remove("incorrect");
+    }, 500);
+}
+
 // Event listeners
 lightThemeButton.addEventListener("click", function () {
     applyTheme("light");
@@ -120,13 +132,14 @@ wordInputElement.addEventListener("keydown", function (event) {
 
             console.log("Correct word!");
         } else {
+            showIncorrectFeedback();
+
             console.log("Incorrect word.");
         }
 
         focusWordInput();
     }
 });
-
 
 // Initial setup
 const savedTheme = localStorage.getItem("selectedTheme") || "dark";
