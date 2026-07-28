@@ -1,11 +1,33 @@
+:root {
+    --page-background: #111827;
+    --panel-background: #1f2937;
+    --main-text: #f9fafb;
+    --muted-text: #9ca3af;
+    --border-color: #374151;
+    --input-background: #ffffff;
+    --input-text: #111827;
+    --accent-color: #60a5fa;
+}
+
+body.light-theme {
+    --page-background: #f3f4f6;
+    --panel-background: #ffffff;
+    --main-text: #111827;
+    --muted-text: #6b7280;
+    --border-color: #d1d5db;
+    --input-background: #ffffff;
+    --input-text: #111827;
+    --accent-color: #2563eb;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
     display: grid;
     place-items: center;
     font-family: Arial, sans-serif;
-    background-color: #111827;
-    color: #f9fafb;
+    background-color: var(--page-background);
+    color: var(--main-text);
 }
 
 .game {
@@ -18,16 +40,52 @@ body {
     font-size: 2.5rem;
 }
 
+.theme-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.theme-label {
+    color: var(--main-text);
+}
+
+.theme-button {
+    padding: 8px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--panel-background);
+    color: var(--main-text);
+    cursor: pointer;
+}
+
+.theme-button.active {
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+.theme-button:hover:not(:disabled) {
+    border-color: var(--accent-color);
+}
+
+.theme-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 .game-panel {
     padding: 32px;
-    border: 1px solid #374151;
+    border: 1px solid var(--border-color);
     border-radius: 16px;
-    background-color: #1f2937;
+    background-color: var(--panel-background);
 }
 
 .label {
     margin-top: 0;
-    color: #d1d5db;
+    color: var(--main-text);
 }
 
 .target-word {
@@ -41,20 +99,22 @@ body {
     width: 100%;
     box-sizing: border-box;
     padding: 14px 16px;
-    border: 2px solid #4b5563;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     font-size: 1.1rem;
     text-align: center;
     outline: none;
+    background-color: var(--input-background);
+    color: var(--input-text);
 }
 
 .word-input:focus {
-    border-color: #60a5fa;
+    border-color: var(--accent-color);
 }
 
 .instruction {
     margin: 16px 0;
-    color: #9ca3af;
+    color: var(--muted-text);
     font-size: 0.95rem;
 }
 

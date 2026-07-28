@@ -1,3 +1,4 @@
+// Data
 const baseWords = [
     "sensei",
     "student",
@@ -19,13 +20,18 @@ const words = baseWords.flatMap(function (word) {
     return [word, capitalizedWord];
 });
 
+// DOM elements
 const targetWordElement = document.getElementById("target-word");
 const wordInputElement = document.getElementById("word-input");
 const scoreElement = document.getElementById("score");
+const lightThemeButton = document.getElementById("light-theme-button");
+const darkThemeButton = document.getElementById("dark-theme-button");
 
+// State
 let currentWord = "";
 let score = 0;
 
+// Functions
 function showRandomWord() {
     let nextWord = currentWord;
 
@@ -38,7 +44,29 @@ function showRandomWord() {
     targetWordElement.textContent = currentWord;
 }
 
-showRandomWord();
+function applyTheme(theme) {
+    if (theme === "light") {
+        document.body.classList.add("light-theme");
+        lightThemeButton.classList.add("active");
+        darkThemeButton.classList.remove("active");
+    } else {
+        document.body.classList.remove("light-theme");
+        darkThemeButton.classList.add("active");
+        lightThemeButton.classList.remove("active");
+    }
+
+    localStorage.setItem("selectedTheme", theme);
+}
+
+
+// Event listeners
+lightThemeButton.addEventListener("click", function () {
+    applyTheme("light");
+});
+
+darkThemeButton.addEventListener("click", function () {
+    applyTheme("dark");
+});
 
 wordInputElement.addEventListener("keydown", function (event) {
     if (event.key === "Enter" || event.key === " ") {
@@ -59,3 +87,12 @@ wordInputElement.addEventListener("keydown", function (event) {
         }
     }
 });
+
+
+// Initial setup
+const savedTheme = localStorage.getItem("selectedTheme") || "dark";
+
+applyTheme(savedTheme);
+
+
+showRandomWord();
