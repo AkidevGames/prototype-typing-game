@@ -1,10 +1,17 @@
-const words = [
+const baseWords = [
     "sensei",
     "student",
     "academy",
     "mission",
     "battle"
 ];
+
+const words = baseWords.flatMap(function (word) {
+    const capitalizedWord =
+        word.charAt(0).toUpperCase() + word.slice(1);
+
+    return [word, capitalizedWord];
+});
 
 const targetWordElement = document.getElementById("target-word");
 const wordInputElement = document.getElementById("word-input");
@@ -14,9 +21,14 @@ let currentWord = "";
 let score = 0;
 
 function showRandomWord() {
-    const randomIndex = Math.floor(Math.random() * words.length);
+    let nextWord = currentWord;
 
-    currentWord = words[randomIndex];
+    while (nextWord === currentWord) {
+        const randomIndex = Math.floor(Math.random() * words.length);
+        nextWord = words[randomIndex];
+    }
+
+    currentWord = nextWord;
     targetWordElement.textContent = currentWord;
 }
 
@@ -26,7 +38,7 @@ wordInputElement.addEventListener("keydown", function (event) {
     if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
 
-        const typedWord = wordInputElement.value.trim().toLowerCase();
+        const typedWord = wordInputElement.value.trim();
 
         if (typedWord === currentWord) {
             score = score + 1;
