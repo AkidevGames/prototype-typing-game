@@ -1,4 +1,4 @@
-# Prototype Typing Game
+# Prototype Typing Game v0.1.1
 
 A browser-based typing game prototype developed with AI assistance and user direction.
 
@@ -7,6 +7,17 @@ A browser-based typing game prototype developed with AI assistance and user dire
 The project currently contains a basic HTML, CSS, and JavaScript setup.
 The project now has a basic typing game loop.
 The project now creates base words and capitalized versions and combines them into one word bank through flatmap.
+Project now prevents words from repeating too early.
+
+## Features
+
+- Random word selection
+- Case-sensitive input checking
+- Enter and Space submission
+- Successful word counter
+- Automatic lowercase and capitalized word variants
+- Immediate-repeat prevention
+- GitHub Pages deployment
 
 ## Planned Features
 
